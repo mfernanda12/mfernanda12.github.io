@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso al Curso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        .button {
+            background-color: #004080;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Escuela de Programadores - Ingreso al Curso</h1>
+    </header>
+    <main>
+        <h2>Ingreso al Curso</h2>
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" required><br><br>
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" required><br><br>
+        <button class="button" onclick="validarIngreso()">Ingresar</button>
+    </main>
+
+    <script>
+        function validarIngreso() {
+            const usuario = document.getElementById('usuario').value;
+            const contrasena = document.getElementById('contrasena').value;
+            if (usuario === 'alumno' && contrasena === '2024') {
+                window.location.href = 'contenido.html';
+            } else {
+                alert('Usuario o contraseña incorrectos.');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación del Curso de Algoritmos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #004080;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Evaluación del Curso de Algoritmos</h1>
+        <nav style='text-align:center; padding:10px; background-color:#004080;'>
+            <a href='index.html' style='color:white; text-decoration:none; margin-right:15px;'>Inicio</a>
+        </nav>
+    </header>
+    <main>
+        <form id="evaluacionForm">
+            <div class="question">
+                <p>1. ¿Qué es un algoritmo?</p>
+                <input type="radio" name="q1" value="correcto"> Una secuencia de pasos bien definidos para resolver un problema.<br>
+                <input type="radio" name="q1" value="incorrecto"> Un lenguaje de programación especializado.<br>
+                <input type="radio" name="q1" value="incorrecto"> Un hardware para cálculos complejos.<br>
+            </div>
+            <div class="question">
+                <p>2. Selecciona las características de un algoritmo eficiente:</p>
+                <input type="checkbox" name="q2" value="correcto"> Correctitud<br>
+                <input type="checkbox" name="q2" value="correcto"> Complejidad óptima<br>
+                <input type="checkbox" name="q2" value="incorrecto"> Interfaz gráfica<br>
+            </div>
+            <div class="question">
+                <p>3. ¿Cuál es la notación utilizada para medir la eficiencia de un algoritmo?</p>
+                <select name="q3">
+                    <option value="incorrecto">Base de datos relacional</option>
+                    <option value="correcto">Big-O</option>
+                    <option value="incorrecto">Binario</option>
+                </select>
+            </div>
+            <div class="question">
+                <p>4. Relaciona los conceptos con su definición:</p>
+                <ul>
+                    <li>
+                        <label>Algoritmo de búsqueda:</label>
+                        <select name="q4_busqueda">
+                            <option value="correcto">Encuentra un elemento dentro de una estructura de datos.</option>
+                            <option value="incorrecto">Ordena elementos de mayor a menor.</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>Algoritmo de ordenamiento:</label>
+                        <select name="q4_ordenamiento">
+                            <option value="correcto">Organiza elementos en un orden específico.</option>
+                            <option value="incorrecto">Encuentra un elemento en un conjunto.</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <p>5. Describe brevemente la importancia de analizar la complejidad de un algoritmo:</p>
+                <textarea name="q5" rows="4" cols="50"></textarea>
+            </div>
+            <button type="button" onclick="calcularCalificacion()">Enviar</button>
+        </form>
+        <p id="resultado"></p>
+    </main>
+    <script>
+        function calcularCalificacion() {
+            let calificacion = 0;
+            const respuestas = new FormData(document.getElementById('evaluacionForm'));
+
+            if (respuestas.get('q1') === 'correcto') calificacion++;
+
+            const q2 = respuestas.getAll('q2');
+            if (q2.includes('correcto') && q2.length === 2) calificacion++;
+
+            if (respuestas.get('q3') === 'correcto') calificacion++;
+
+            if (respuestas.get('q4_busqueda') === 'correcto') calificacion++;
+            if (respuestas.get('q4_ordenamiento') === 'correcto') calificacion++;
+
+            document.getElementById('resultado').innerText = `Tu calificación es: ${calificacion}/5`;
+        }
+    </script>
+</body>
+</html>
